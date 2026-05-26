@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viam Next</title>
+
+  <style>
+
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#ffffff;
+      color:#000000;
+    }
+
+    header{
+      background:#0d59b0e1;
+      color:rgb(255, 255, 255);
+      text-align:center;
+      padding:40px 20px;
+    }
+
+    header p{
+      margin:0;
+      font-size:40px;
+      font-weight:bold;
+    }
+
+    header h1{
+      font-size:18px;
+      margin-top:10px;
+    }
+
+    .container{
+      width:90%;
+      max-width:1100px;
+      margin:auto;
+      padding:30px 0;
+    }
+
+    .about{
+      background:white;
+      padding:25px;
+      border-radius:15px;
+      margin-bottom:30px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .card{
+      background:white;
+      border-radius:15px;
+      overflow:hidden;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:scale(1.03);
+    }
+
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .card h3{
+      text-align:center;
+      padding:15px;
+      margin:0;
+    }
+
+    .buttons{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      padding:10px;
+    }
+
+    .buttons button{
+      border:none;
+      background:#0077ff;
+      color:white;
+      padding:8px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:18px;
+      transition:0.3s;
+    }
+
+    .buttons button:hover{
+      background:#005fcc;
+      transform:scale(1.1);
+    }
+
+    footer{
+      background:#222;
+      color:white;
+      text-align:center;
+      padding:20px;
+      margin-top:40px;
+    }
+
+    .contact{
+      margin-top:20px;
+      line-height:1.8;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <p>Офіційний сайт Viam Next</p>
+    <h1>Ласкаво просимо!</h1>
+  </header>
+
+  <div class="container">
+
+    <section class="about">
+
+      <h2>Про нас</h2>
+
+      <p>
+        Тут можна написати інформацію про вашу фірму,
+        послуги або товари.
+      </p>
+
+      <div class="contact">
+        <strong>Контакти:</strong><br>
+        Телефон: +351 964 360 220<br>
+        Телефон: +351 962 654 700<br>
+        Email: ivavalmar@gmail.com
+      </div>
+
+    </section>
+
+    <section class="gallery">
+
+      <!-- Офіс -->
+      <div class="card">
+
+        <img id="officePhoto" src="office1.jpg">
+
+        <div class="buttons">
+          <button onclick="prevOffice()">⬅</button>
+          <button onclick="nextOffice()">➡</button>
+        </div>
+
+        <h3>Наш офіс</h3>
+
+      </div>
+
+      <!-- Команда -->
+      <div class="card">
+
+        <img id="teamPhoto" src="team1.jpg">
+
+        <div class="buttons">
+          <button onclick="prevTeam()">⬅</button>
+          <button onclick="nextTeam()">➡</button>
+        </div>
+
+        <h3>Наша команда</h3>
+
+      </div>
+
+      <!-- Послуги -->
+      <div class="card">
+
+        <img id="servicePhoto" src="service1.jpg">
+
+        <div class="buttons">
+          <button onclick="prevService()">⬅</button>
+          <button onclick="nextService()">➡</button>
+        </div>
+
+        <h3>Наші послуги</h3>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <footer>
+    © 2026 Viam Next
+  </footer>
+
+  <script>
+
+    // ===== Команда =====
+
+    const teamPhotos = [
+      "team1.jpg",
+      "team2.jpg",
+      "team3.jpg"
+    ];
+
+    let teamIndex = 0;
+
+    function showTeam(){
+      document.getElementById("teamPhoto").src =
+        teamPhotos[teamIndex];
+    }
+
+    function nextTeam(){
+      teamIndex++;
+
+      if(teamIndex >= teamPhotos.length){
+        teamIndex = 0;
+      }
+
+      showTeam();
+    }
+
+    function prevTeam(){
+      teamIndex--;
+
+      if(teamIndex < 0){
+        teamIndex = teamPhotos.length - 1;
+      }
+
+      showTeam();
+    }
+
+    setInterval(nextTeam, 5000);
+
+
+
+
+    // ===== Послуги =====
+
+    const servicePhotos = [
+      "service1.jpg",
+      "service2.jpg",
+      "service3.jpg"
+    ];
+
+    let serviceIndex = 0;
+
+    function showService(){
+      document.getElementById("servicePhoto").src =
+        servicePhotos[serviceIndex];
+    }
+
+    function nextService(){
+      serviceIndex++;
+
+      if(serviceIndex >= servicePhotos.length){
+        serviceIndex = 0;
+      }
+
+      showService();
+    }
+
+    function prevService(){
+      serviceIndex--;
+
+      if(serviceIndex < 0){
+        serviceIndex = servicePhotos.length - 1;
+      }
+
+      showService();
+    }
+
+    setInterval(nextService, 5000);
+
+
+
+
+    // ===== Офіс =====
+
+    const officePhotos = [
+      "office1.jpg",
+      "office2.jpg",
+      "office3.jpg"
+    ];
+
+    let officeIndex = 0;
+
+    function showOffice(){
+      document.getElementById("officePhoto").src =
+        officePhotos[officeIndex];
+    }
+
+    function nextOffice(){
+      officeIndex++;
+
+      if(officeIndex >= officePhotos.length){
+        officeIndex = 0;
+      }
+
+      showOffice();
+    }
+
+    function prevOffice(){
+      officeIndex--;
+
+      if(officeIndex < 0){
+        officeIndex = officePhotos.length - 1;
+      }
+
+      showOffice();
+    }
+
+    setInterval(nextOffice, 5000);
+
+  </script>
+
+</body>
+</html>
